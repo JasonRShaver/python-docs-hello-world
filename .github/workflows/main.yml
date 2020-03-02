@@ -11,7 +11,7 @@ on:
 #
 # 2. Change these variables for your configuration:
 env:
-  AZURE_WEBAPP_NAME: Python-thecatsaidno # set this to your application's name
+  AZURE_WEBAPP_NAME: Python-jrs-gha      # set this to your application's name
   AZURE_WEBAPP_PACKAGE_PATH: '.'         # set this to the path to your web app project, defaults to the repository root
   PYTHON_VERSION: '3.7'                  # set this to the python version to use
 
@@ -20,12 +20,12 @@ jobs:
     name: Build and Deploy
     runs-on: ubuntu-latest
     steps:
-      - name: Azure Login
-        uses: Azure/login@v1
-        with:
+    - uses: actions/checkout@v1
+    - name: Azure Login
+      uses: Azure/login@v1
+      with:
           # Paste output of `az ad sp create-for-rbac` as value of secret variable: AZURE_CREDENTIALS
           creds:  ${{ secrets.AZURE_CREDENTIALS }}
-    - uses: actions/checkout@v1
     -  name: App Service Web App Build Action
        uses: Azure/appservice-build@v2-beta
        # with:
