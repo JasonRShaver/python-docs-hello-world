@@ -13,7 +13,7 @@ on:
 env:
   AZURE_WEBAPP_NAME: Python-jrs-gha      # set this to your application's name
   AZURE_WEBAPP_PACKAGE_PATH: '.'         # set this to the path to your web app project, defaults to the repository root
-  PYTHON_VERSION: '3.8.1'                  # set this to the python version to use
+  PYTHON_VERSION: '3.7'                  # set this to the python version to use
 
 jobs:
   build:
@@ -27,7 +27,7 @@ jobs:
           # Paste output of `az ad sp create-for-rbac` as value of secret variable: AZURE_CREDENTIALS
           creds:  ${{ secrets.AZURE_CREDENTIALS }}
     -  name: App Service Web App Build Action
-       uses: Azure/appservice-build@v2-beta
+       uses: Azure/appservice-build@master
        # with:
           # Relative path (within the repository) to the source directory of the project you want to build; if no value is provided for this, the root of the repository ("GITHUB_WORKSPACE" environment variable) will be built.
           # source-directory: # optional
