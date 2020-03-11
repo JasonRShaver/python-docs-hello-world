@@ -20,12 +20,12 @@ jobs:
     name: Build and Deploy
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - name: Azure Login
-      uses: Azure/login@v1
-      with:
-          # Paste output of `az ad sp create-for-rbac` as value of secret variable: AZURE_CREDENTIALS
-          creds:  ${{ secrets.AZURE_CREDENTIALS }}
+    - uses: actions/checkout@v2
+#    - name: Azure Login
+#      uses: Azure/login@v1
+#      with:
+#          # Paste output of `az ad sp create-for-rbac` as value of secret variable: AZURE_CREDENTIALS
+#          creds:  ${{ secrets.AZURE_CREDENTIALS }}
     -  name: App Service Web App Build Action
        uses: Azure/appservice-build@v2-beta
     - name: Deploy Web App using GH Action azure/webapps-deploy
