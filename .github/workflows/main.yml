@@ -27,9 +27,13 @@ jobs:
           creds:  ${{ secrets.AZURE_CREDENTIALS }}
     -  name: App Service Web App Build Action with Oryx v2-beta
        uses: Azure/appservice-build@v2-beta
+       # with:
+          # source-directory: # optional
+          # platform: # optional
+          # platform-version: # optional
     - name: Deploy Web App using GH Action azure/webapps-deploy
       uses: azure/webapps-deploy@v2
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
-        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+#        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
