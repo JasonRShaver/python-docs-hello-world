@@ -27,16 +27,7 @@ jobs:
           # Paste output of `az ad sp create-for-rbac` as value of secret variable: AZURE_CREDENTIALS
           creds:  ${{ secrets.AZURE_CREDENTIALS }}
     -  name: App Service Web App Build Action
-       uses: Azure/appservice-build@v1
-    - name: 'Run pip'
-      shell: bash
-      run: |
-        # If your web app project is not located in your repository's root
-        # Please change your directory for pip in pushd
-        pushd .
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt --target=".python_packages/lib/python3.6/site-packages"
-        popd
+       uses: Azure/appservice-build@v2-beta
     - name: Deploy Web App using GH Action azure/webapps-deploy
       uses: azure/webapps-deploy@v2
       with:
