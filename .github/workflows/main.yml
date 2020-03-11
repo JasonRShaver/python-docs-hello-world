@@ -27,7 +27,7 @@ jobs:
           # Paste output of `az ad sp create-for-rbac` as value of secret variable: AZURE_CREDENTIALS
           creds:  ${{ secrets.AZURE_CREDENTIALS }}
     -  name: App Service Web App Build Action
-       uses: Azure/appservice-build@v2-beta
+       uses: Azure/appservice-build@v2
     - name: 'Run pip'
       shell: bash
       run: |
