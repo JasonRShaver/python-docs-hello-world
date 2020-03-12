@@ -1,4 +1,4 @@
-name: Deploy Python package to Azure Web App
+name: Deploy Python Web App to Azure
 on:
   [push]
 jobs:
@@ -7,14 +7,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Standard Azure Login Action
+      
+    - name: Azure Login Action
       uses: Azure/login@v1
       with:
           creds:  ${{ secrets.AZURE_CREDENTIALS }}
-    -  name: App Service Web App Build Action with Oryx v2-beta
-       uses: Azure/appservice-build@v2-beta
+          
+    - name: App Service Web App Build Action with Oryx v2-beta
+      uses: Azure/appservice-build@v2-beta
+
     - name: Deploy Web App using GH Action azure/webapps-deploy
       uses: azure/webapps-deploy@v2
       with:
         app-name: Python-jrs-gha
-        package: '.'
